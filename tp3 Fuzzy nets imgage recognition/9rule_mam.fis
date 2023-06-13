@@ -1,0 +1,61 @@
+[System]
+Name='9rule_mam'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='R'
+Range=[0 254]
+NumMFs=3
+MF1='Red_low':'trimf',[0 133 140]
+MF2='Red_high':'trimf',[150 155 255]
+MF3='Red_mid':'trimf',[130 145 150]
+
+[Input2]
+Name='G'
+Range=[0 254]
+NumMFs=6
+MF1='green_midlow':'trimf',[57 70 90]
+MF2='greenlow':'trimf',[0 56 70]
+MF3='green_mid':'trimf',[69 85 100]
+MF4='green_mid_high':'trimf',[85 100 125]
+MF5='green_high':'trimf',[100 135 152]
+MF6='green_very_high':'trimf',[132 155 255]
+
+[Input3]
+Name='B'
+Range=[0 254]
+NumMFs=3
+MF1='blue_low':'trimf',[0 20 25]
+MF2='blue_mid':'trimf',[25 29 32]
+MF3='blue_high':'trimf',[31 35 255]
+
+[Output1]
+Name='CLASS'
+Range=[1 6]
+NumMFs=6
+MF1='1':'trimf',[0 1 1.5]
+MF2='2':'trimf',[1.5 2 2.5]
+MF3='3':'trimf',[2.5 3 3.5]
+MF4='4':'trimf',[3.5 4 4.5]
+MF5='5':'trimf',[4.5 5 5.5]
+MF6='6':'trimf',[5.5 6 6]
+
+[Rules]
+0 2 0, 6 (1) : 1
+0 1 0, 5 (1) : 1
+0 3 0, 4 (1) : 1
+0 4 0, 3 (1) : 1
+0 5 0, 2 (1) : 1
+0 6 0, 1 (1) : 1
+3 2 0, 6 (1) : 1
+0 5 2, 1 (1) : 1
+3 0 1, 6 (1) : 1

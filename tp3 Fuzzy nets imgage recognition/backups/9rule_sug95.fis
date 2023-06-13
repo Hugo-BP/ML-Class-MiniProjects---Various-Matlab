@@ -1,0 +1,61 @@
+[System]
+Name='9rule_sug'
+Type='sugeno'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=9
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='R'
+Range=[0 254]
+NumMFs=3
+MF1='red_low':'trimf',[0 137 145]
+MF2='red_mid':'trimf',[135 150 155]
+MF3='red_high':'trimf',[150 155 255]
+
+[Input2]
+Name='G'
+Range=[0 254]
+NumMFs=6
+MF1='green_midlow':'trimf',[60 70 85]
+MF2='greenlow':'trimf',[0 55 70]
+MF3='green_mid':'trimf',[75 85 100]
+MF4='green_mid_high':'trimf',[85 100 137]
+MF5='green_high':'trimf',[123 137 153]
+MF6='green_very_high':'trimf',[143 153 255]
+
+[Input3]
+Name='B'
+Range=[0 254]
+NumMFs=3
+MF1='blue_low':'trimf',[0 20 26]
+MF2='blue_mid':'trimf',[24 31 34]
+MF3='blue_high':'trimf',[31 35 255]
+
+[Output1]
+Name='Class'
+Range=[1 6]
+NumMFs=6
+MF1='1':'constant',[1]
+MF2='2':'constant',[2]
+MF3='3':'constant',[3]
+MF4='4':'constant',[4]
+MF5='5':'constant',[5]
+MF6='6':'constant',[6]
+
+[Rules]
+0 2 0, 6 (1) : 1
+0 1 0, 5 (1) : 1
+0 3 0, 4 (1) : 1
+0 4 0, 3 (1) : 1
+0 5 0, 2 (1) : 1
+0 6 0, 1 (1) : 1
+2 2 0, 6 (1) : 1
+0 5 2, 1 (1) : 1
+2 0 1, 6 (1) : 1
